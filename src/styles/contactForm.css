@@ -15,7 +15,6 @@
 }
 
 .contact-form {
-  max-width: 700px;
   background: white;
   padding: 40px;
   border-radius: 12px;
@@ -42,12 +41,13 @@
 
 .contact-form input:focus,
 .contact-form textarea:focus {
-  border-color: #6c63ff;
+  border-color: #b96fb0;
+  box-shadow: 0 0 0 0.1rem rgba(185, 111, 176, 0.25) !important;
   outline: none;
 }
 
 .contact-form button {
-  background-color: #6c63ff;
+  background-color: #b96fb0;
   color: white;
   border: none;
   padding: 12px 30px;
@@ -58,5 +58,68 @@
 }
 
 .contact-form button:hover {
-  background-color: #5548c8;
+  background-color: #d698ce;
 }
+
+/* Contact Info */
+.contact-info-box {
+  background: white;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  /* display: flex; */       /* Remove this */
+  /* flex-direction: column; */ /* Remove this */
+  /* justify-content: center; */ /* Remove this */
+}
+
+.contact-info-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.contact-info-item h5 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+.contact-info-item p {
+  margin: 0;
+  color: #666;
+}
+
+.contact-icon {
+  font-size: 1.5rem;
+  color: #b96fb0;
+}
+
+/* Responsive */
+@media (max-width: 767px) {
+  .contact-form,
+  .contact-info-box {
+    padding: 25px;
+  }
+
+  .contact-info-item {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+.contact-info-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #b96fb0;
+  margin: 0 0 30px 0; /* remove top margin, keep bottom */
+  text-align: center;
+  background: linear-gradient(to right, #fce4ec, #f3e5f5);
+  padding: 12px 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(185, 111, 176, 0.1);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+
