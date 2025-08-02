@@ -1,0 +1,45 @@
+:root {
+  --bs-body-bg: #FFF8F2;
+  --bs-body-color: #3B3B3B;
+
+  --primary-color: #d29ca2;
+  --secondary-color: #E7B8B1;
+  --accent-color: #A45C5C;
+  --heading-color: #ab61a9;
+  --hover-bg: #FFE6DC;
+}
+
+/* Global body styles */
+body {
+  background-color: var(--bs-body-bg);
+  color: var(--bs-body-color);
+  font-family: 'Inter', sans-serif;
+}
+
+/* Headings */
+h1, h2, h3, h4 {
+  font-family: 'Poppins', sans-serif !important;
+  color: var(--heading-color);
+}
+
+/* Custom buttons */
+.btn-accent {
+  background-color: var(--accent-color) !important; 
+  color: #fff !important;
+  border: none !important;
+}
+
+.btn-accent:hover {
+  background-color: var(--hover-bg) !important;
+  color: var(--accent-color) !important;
+}
+.btn.btn-accent {
+  transition: background-color 0.3s ease, color 0.3s ease !important;
+}
+/* Then use in your CSS */
+.logo-text {
+  font-family: 'Great Vibes', cursive;
+  font-size: 32px;
+  color: #c269b9; /* from your palette */
+}
+

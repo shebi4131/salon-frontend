@@ -1,0 +1,45 @@
+.before-after-section {
+  text-align: center;
+}
+
+.before-after-swiper {
+  max-width: 800px;
+  margin: auto;
+}
+
+.slide-wrapper {
+  position: relative;
+}
+
+.image-pair {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.before-image,
+.after-image {
+  width: 48%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.caption {
+  margin-top: 1rem;
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: #555;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  color: #ffffff;
+}
+
+.swiper-pagination-bullet-active {
+  background: #b96fb0;
+}
