@@ -12,6 +12,7 @@ import './styles/custom.css';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
+import AddService from './pages/AddService';
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
         <Route path="/service-details" element={<ServiceDetails />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/addservice" element={<AddService />} />
       </Routes>
     </Router>
   );

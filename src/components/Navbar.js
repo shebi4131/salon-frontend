@@ -41,6 +41,11 @@ function Navbar() {
                 Signup
               </NavLink>
             </li>
+            <li className="nav-item">
+              <NavLink to="/addservice" className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}>
+                Add Service
+              </NavLink>
+            </li>
           </ul>
         </div>
       </div>
