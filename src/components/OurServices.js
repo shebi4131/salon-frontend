@@ -13,7 +13,10 @@ const OurServices = () => {
         console.log("🔄 Fetching services...");
         console.log("🌐 API Base URL:", process.env.REACT_APP_API_BASE);
         
-        const apiUrl = `${process.env.REACT_APP_API_BASE}/api/services`;
+        // Remove any trailing slashes and construct URL properly
+        const baseUrl = process.env.REACT_APP_API_BASE.replace(/\/$/, '');
+        const apiUrl = `${baseUrl}/api/services`;
+        console.log("📡 Base URL:", baseUrl);
         console.log("📡 Full API URL:", apiUrl);
         
         const response = await fetch(apiUrl, {
