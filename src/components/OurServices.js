@@ -11,27 +11,47 @@ const OurServices = () => {
     const fetchServices = async () => {
       try {
         console.log("🔄 Fetching services...");
+        console.log("🌐 API Base URL:", process.env.REACT_APP_API_BASE);
         
-        const response = await fetch(`${process.env.REACT_APP_API_BASE}/api/services`, {
+        const apiUrl = `${process.env.REACT_APP_API_BASE}/api/services`;
+        console.log("📡 Full API URL:", apiUrl);
+        
+        const response = await fetch(apiUrl, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
           },
         });
 
+        console.log("📊 Response Status:", response.status);
+        console.log("📊 Response OK:", response.ok);
+        
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
         const data = await response.json();
-        console.log("📥 API Response:", data);
+        console.log("📥 Raw API Response:", data);
+        console.log("📥 Response Type:", typeof data);
+        console.log("📥 Is Array:", Array.isArray(data));
 
         if (data.success) {
+          console.log("✅ API Success - Data:", data.data);
+          console.log("✅ API Success - Count:", data.count);
+          console.log("✅ API Success - Data Type:", typeof data.data);
+          console.log("✅ API Success - Is Data Array:", Array.isArray(data.data));
+          
           setServices(data.data);
           console.log(`✅ Successfully loaded ${data.count} services`);
         } else {
-          setError("Failed to load services");
+          console.error("❌ API returned success: false");
           console.error("❌ API Error:", data.error);
+          setError("Failed to load services");
         }
       } catch (error) {
-        setError("Network error occurred");
-        console.error("❌ Failed to fetch services:", error);
+        console.error("❌ Network/Fetch Error:", error);
+        console.error("❌ Error Stack:", error.stack);
+        setError(`Network error: ${error.message}`);
       } finally {
         setLoading(false);
       }
@@ -39,6 +59,12 @@ const OurServices = () => {
 
     fetchServices();
   }, []);
+
+  // Add debug info to the rendered component
+  console.log("🎨 Rendering - Services State:", services);
+  console.log("🎨 Rendering - Services Length:", services.length);
+  console.log("🎨 Rendering - Loading:", loading);
+  console.log("🎨 Rendering - Error:", error);
 
   if (loading) {
     return (
@@ -60,14 +86,15 @@ const OurServices = () => {
           <div className="error-state">
             <div className="error-icon">💄</div>
             <h3>Oops! Something went wrong</h3>
-            <p>We're having trouble loading our services. Please try refreshing the page.</p>
+            <p>{error}</p>
+            <p>Please check the console for more details.</p>
           </div>
         </div>
       </section>
     );
   }
 
-  if (services.length === 0) {
+  if (!services || services.length === 0) {
     return (
       <section className="services-section">
         <div className="container">
@@ -80,6 +107,9 @@ const OurServices = () => {
             <h3>Coming Soon!</h3>
             <p>We're preparing amazing beauty services for you.</p>
             <p>Stay tuned for our grand reveal!</p>
+            <p style={{fontSize: '12px', color: '#666', marginTop: '20px'}}>
+              Debug: Services array length is {services ? services.length : 'null/undefined'}
+            </p>
           </div>
         </div>
       </section>
@@ -114,8 +144,6 @@ const OurServices = () => {
                     <div className="overlay-content">
                       <span className="view-icon">✨</span>
                       <span>Discover More</span>
-                     
-                  
                     </div>
                   </div>
                 </div>
@@ -133,13 +161,12 @@ const OurServices = () => {
                       <span className="info-text">{service.duration} mins</span>
                     </div>
                   </div>
-                      <Link to="/service-details" state={{ service }} className="service-link">
+                  <Link to="/service-details" state={{ service }} className="service-link">
                     <button className="book-now-btn">
                       <span>Book Now</span>
                       <span className="btn-arrow">→</span>
                     </button>
                   </Link>
-                  
                 </div>
               </div>
             </div>
